@@ -1,0 +1,3 @@
+# Keep secrets and local env files out of git
+.env
+.env.local
