@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outpost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+      :root {
+        --holo-bg: #020408;
+        --holo-card: #0A0F14;
+        --holo-surface: #111822;
+        --holo-border: #1E293B;
+        --holo-primary: #CCFF00; /* Neon Lime/Green from video */
+        --holo-accent: #0EA5E9;  /* Cyan/Blue for secondary connections */
+        --holo-text: #F1F5F9;
+        --holo-muted: #94A3B8;
+        --holo-shadow-color: rgba(204, 255, 0, 0.1); 
+      }
+
+      .light {
+        --holo-bg: #F3F4F6;
+        --holo-card: #FFFFFF;
+        --holo-surface: #F9FAFB;
+        --holo-border: #E5E7EB;
+        --holo-primary: #3B82F6;
+        --holo-accent: #F97316;
+        --holo-text: #111827;
+        --holo-muted: #6B7280;
+        --holo-shadow-color: rgba(0, 0, 0, 0.06);
+      }
+
+      body {
+        background-color: var(--holo-bg);
+        color: var(--holo-text);
+        transition: background-color 0.3s ease, color 0.3s ease;
+        overflow-x: hidden;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      /* Dark Theme Dynamic Background */
+      html:not(.light) body {
+        /* Subtle grid pattern overlay */
+        background-image: 
+          linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        background-attachment: fixed;
+      }
+      
+      /* Primary Background Image - Connected World Theme */
+      html:not(.light) body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Using a high-quality abstract network connection image to mimic the video theme */
+        background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.15; /* Subtle enough to not interfere with text */
+        z-index: -2;
+        pointer-events: none;
+        filter: hue-rotate(60deg) contrast(1.2); /* Shift towards green/cyan to match theme */
+      }
+      
+      /* Animated Glow Overlay */
+      html:not(.light) body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(204, 255, 0, 0.03), transparent 70%);
+        z-index: -1;
+        pointer-events: none;
+        animation: pulseBackground 10s infinite alternate;
+      }
+
+      @keyframes pulseBackground {
+        0% { opacity: 0.5; transform: scale(1); }
+        100% { opacity: 0.8; transform: scale(1.05); }
+      }
+
+      /* Light Theme specific overrides */
+      html.light .tech-bracket { display: none; }
+      
+      html.light .glass-panel {
+        background: rgba(255, 255, 255, 0.85);
+        border-right: 1px solid var(--holo-border);
+        backdrop-filter: blur(12px);
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--holo-border); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--holo-muted); }
+      
+      /* Shared Glass Effect */
+      .glass-panel {
+        background: rgba(10, 15, 20, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Tech Borders */
+      .tech-border { position: relative; }
+      .tech-border::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--holo-primary), transparent);
+        opacity: 0.5;
+      }
+
+      /* Leaflet Customization */
+      .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+        background: var(--holo-card);
+        color: var(--holo-text);
+        border: 1px solid var(--holo-border);
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      }
+      .leaflet-container { font-family: 'Inter', sans-serif; }
+      
+      /* Scanline Animation */
+      @keyframes scanline {
+        0% { transform: translateY(-100%); opacity: 0; }
+        50% { opacity: 0.5; }
+        100% { transform: translateY(200%); opacity: 0; }
+      }
+      .animate-scanline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to bottom, transparent, rgba(204, 255, 0, 0.05), transparent);
+        animation: scanline 4s linear infinite;
+        pointer-events: none;
+        z-index: 5;
+      }
+      html.light .animate-scanline::before { display: none; }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              holo: {
+                bg: 'var(--holo-bg)', 
+                card: 'var(--holo-card)', 
+                surface: 'var(--holo-surface)', 
+                border: 'var(--holo-border)', 
+                primary: 'var(--holo-primary)', 
+                accent: 'var(--holo-accent)', 
+                text: 'var(--holo-text)',
+                muted: 'var(--holo-muted)'
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Times New Roman', 'serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              scroll: 'scroll 30s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'glow': 'glow 2s ease-in-out infinite alternate',
+              'shimmer': 'shimmer 2s infinite linear',
+              'highlight-text': 'highlightText 1.5s ease-out',
+            },
+            boxShadow: {
+              'neon': '0 4px 20px var(--holo-shadow-color)',
+              'neon-strong': '0 8px 30px var(--holo-shadow-color)',
+            },
+            keyframes: {
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              glow: {
+                '0%': { boxShadow: '0 0 5px var(--holo-primary)' },
+                '100%': { boxShadow: '0 0 20px var(--holo-primary), 0 0 10px var(--holo-accent)' }
+              },
+              shimmer: {
+                '0%': { opacity: '0.5' },
+                '50%': { opacity: '1' },
+                '100%': { opacity: '0.5' },
+              },
+              highlightText: {
+                '0%': { color: 'var(--holo-primary)', textShadow: '0 0 8px rgba(204, 255, 0, 0.5)' },
+                '100%': { color: 'var(--holo-text)', textShadow: 'none' },
+              }
+            },
+            backgroundImage: {
+              'holo-gradient': 'linear-gradient(135deg, var(--holo-accent) 0%, #22c55e 100%)',
+              'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)',
+            }
+          },
+        },
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

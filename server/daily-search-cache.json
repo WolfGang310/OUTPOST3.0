@@ -1,0 +1,101 @@
+{
+  "fetchedAt": 1765346214714,
+  "data": {
+    "riskMetrics": {
+      "gprValue": "Elevated (Coface political risk index at 40.2% in April 2025)",
+      "gprTrend": "Elevated, with some stabilization but persistent underlying threats and increasing global political instability due to an unprecedented wave of elections and geopolitical rivalries.",
+      "energyVolatility": {
+        "status": "High",
+        "trend": "Fluctuating, with natural gas futures experiencing extreme volatility recently, including a significant drop after a rally, but overall remaining elevated."
+      },
+      "conflictZones": {
+        "count": "Numerous (e.g., Gaza, Sudan, Ukraine, DRC, Thailand-Cambodia border, Venezuela, Myanmar)",
+        "status": "Increasing, with global conflicts nearly doubling over the past five years and a 25% increase in political violence events in 2024 compared to 2023."
+      },
+      "marketResilience": {
+        "status": "Resilient",
+        "change": "Stable/Improving, as the global economy demonstrates remarkable resilience despite uncertainty and tariffs, with the OECD having revised its global growth forecast for 2025 upward."
+      },
+      "supplyChain": {
+        "status": "Stable with specific disruptions",
+        "value": "Global Supply Chain Pressure Index at -0.16 points in November 2025, indicating easing pressure below its historical average. However, an acute global shortage of memory chips is driving a new supply chain crisis in the tech sector."
+      },
+      "lastUpdated": "Wednesday, December 10, 2025 at 5:56 AM UTC"
+    },
+    "news": [
+      {
+        "headline": "Chinese premier cites damage from US tariffs, as China's surplus surpasses $1 trillion",
+        "source": "AP News",
+        "snippet": "China's premier says higher tariffs have dealt a “severe blow” to the world economy, even as China's own trade surplus has surged past $1 trillion.",
+        "time": "14 hours ago",
+        "impactLevel": "High",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHkV4_RivrDCLWwh6ATczUSbYzr7Fi-jg7HZ7_TlwaI2EZ81h37UEKG-ZVeFCBqRjm2_94Lg6gmcOr8GIu-aED8ko7Vnk_ub7X2Bv5xoBMOoZqVtlh8K6Z"
+      },
+      {
+        "headline": "Bank of England expects budget will cut inflation by up to half a percentage point",
+        "source": "The Guardian",
+        "snippet": "Bank of England expects budget will cut inflation by up to half a percentage point.",
+        "time": "10h ago",
+        "impactLevel": "Medium",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6Dx2wWagVgbS7GRjvZBjB0dU4suzHZjE-T9cxOC5WtfIveE7QiBwkotA0DGIav9J9HAMF-Pp6QXDHkv1AsFi3vYzgdRqMucIavYTFV1tvczDS3rmBI1PkvWvVsrMsf49k"
+      },
+      {
+        "headline": "UK's MI5 protected IRA agent who committed murders, police report finds",
+        "source": "Al Jazeera",
+        "snippet": "UK's MI5 protected IRA agent who committed murders, police report finds.",
+        "time": "Dec 9, 2025",
+        "impactLevel": "High",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH3zlDYZT_TJ_rxGVFlXrnAqOueOQv1BmPGMB-YZDZDZh8wUHJjeTixGJbQnSClJLg7eTheMNJvbksdfbb3Lybv54YDyKM7LP_qEWjjgPCD4M9e4brtD8t3Bj8BZuMdJxYc"
+      },
+      {
+        "headline": "Ukraine war latest: Member of UK armed forces dies in Ukraine after 'tragic accident'",
+        "source": "Sky News",
+        "snippet": "Ukraine once again came under heavy Russian aerial attack overnight, with the city Kremenchuk hit by \"massive strikes\" that knocked out power, heat and water supplies.",
+        "time": "Today",
+        "impactLevel": "High",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQicXMsXtPHvtKB4nKvUsLsdcnicgYGDwZbZ0kB31DALVEd7wFvAIIrStD8I8kVlrHk1byXU3N8VA5Y2g-XSo6CYeA7CG3qRIEi9RX-uHLMcxUm4o3VlU09ZhV4Q2mLt9OMcTgfjg0fPjuQ7tEdBwfu-UmhxFGUE1XQoctLyWyKRSt90_sCuvcQjViRMK46N_uauwtxcGI9ZhDl7Hr88bDAQxHvwBoGXV1bNvduA=="
+      },
+      {
+        "headline": "JSW Energy Sees Elevated Trading Volumes Amidst Market Volatility",
+        "source": "MarketsMojo",
+        "snippet": "JSW Energy Ltd has emerged as one of the most actively traded stocks in the power sector, registering a significant surge in trading volumes on 9 December 2025, despite a modest decline in price.",
+        "time": "Dec 9, 2025",
+        "impactLevel": "Medium",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWDLv8vcf7_nnQ90aEghfNjWWpII6t_Q-_Dk7gAvBw0D-BiFHoCiaFamvboIGMWyzcIYHOsjS80Q3ZKscQclfpaTzSw2OEW-sLvOuqWCd7LeBki6QmlHu--oXoos3xNguexwrp2yvq3JiNMcp1WdSVIJxHCMHauwIwdlgAlvxbu8_gL7DI7t6XpFMp_KuH53k8V7wJpgUeOTh43P5LX_pAHkwMIX9jMcQnxNGiLDp7-Fw=="
+      },
+      {
+        "headline": "IKEA Shifts More Manufacturing to U.S. as Tariffs Raise Costs",
+        "source": "Supply Chain 24/7",
+        "snippet": "IKEA plans to ramp up U.S. manufacturing as tariffs drive up import costs and pressure its global supply chain.",
+        "time": "December 9, 2025",
+        "impactLevel": "Medium",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcbru6F4vPbUcVeUGHt053bmz1LL78Z5Oe1Fq9wmGuKutkUfE7xGIAps2O1av2FixrdaJTQ5aMvyCY92ZUbQOG9z1JFyG3CvuofOeJCevhJ2N-taTF0DyesQ=="
+      },
+      {
+        "headline": "Gartner: Leadership Instability Is Dragging Down Supply Chains",
+        "source": "Supply Chain 24/7",
+        "snippet": "A new Gartner survey shows that leadership turnover is disrupting supply chains and exposing gaps in how future leaders are trained.",
+        "time": "December 9, 2025",
+        "impactLevel": "Medium",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcbru6F4vPbUcVeUGHt053bmz1LL78Z5Oe1Fq9wmGuKutkUfE7xGIAps2O1av2FixrdaJTQ5aMvyCY92ZUbQOG9z1JFyG3CvuofOeJCevhJ2N-taTF0DyesQ=="
+      },
+      {
+        "headline": "The remarkable adaptability of markets in an uncertain world",
+        "source": "Trustnet",
+        "snippet": "Global political and economic events have been dramatic in recent years, yet stockmarkets have still made progress. This resilience is to be celebrated, but with so much uncertainty, this is no time for naïve optimism.",
+        "time": "09 December 2025",
+        "impactLevel": "Low",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzvwRwuA0vVfmv0xHgBVizhT8VifWecLdD7Z_OlX3AYp81meRAS48KQb_4benJtEQdZfnaI-8FI9kAzl6hb2iXz4cCyWnxFwNNnKb1ncMPImtWNFFZzoL4ve6szMncVK09m9d9tBK3mq9kb8kSDQlQv0NdDF5cCJU-m0QQW37XI4CqyCXxSkMTIRu61bc5SKrSc-Bgr-r70MctEQ5x"
+      },
+      {
+        "headline": "Natural gas prices sink for 2nd session amid milder weather forecasts",
+        "source": "Trading Economics",
+        "snippet": "US natural gas futures fell almost 4% to around $4.7/MMBtu on Tuesday, following a steep 7.1% drop on Monday and moving further away from the three-year highs reached earlier this month, driven by milder weather forecasts and near-record production.",
+        "time": "December 10, 2025",
+        "impactLevel": "Medium",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGNY3s556USazt3lJ1hx6TsNjWZB8Flmw4c1ZLeJl7qlZPZLQdZq6EJbFHiJkimA4v-yXDc_22bAQmZdR09OMVsYBFoEwc0D6dBsPbszcV6Xr-1XoTmMv6F83q4wSTRNJSnxbDdmZzf28wswfg="
+      }
+    ],
+    "economicBrief": "The global economy is currently experiencing modest but uneven growth, projected at 3.0% for 2025, a slight deceleration from 2024. Despite this, overall market resilience is noted, with stock markets making progress amidst dramatic global political and economic events. Inflation, while trending down, remains above pre-pandemic levels in advanced economies. Major economies face varied conditions: the US shows dynamism with a cooling labor market, China grapples with a prolonged property downturn and demographic challenges, while India remains a strong performer. Global trade continues to face headwinds due to increased tensions and policy uncertainty. The Eurozone saw a slight acceleration in inflation in November, but it remains near target. Looking ahead to 2026, global growth is anticipated to stay just above 3%."
+  }
+}
